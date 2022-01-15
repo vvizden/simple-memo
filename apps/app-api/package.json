@@ -1,0 +1,23 @@
+{
+  "name": "app-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "viz",
+  "license": "MIT",
+  "dependencies": {
+    "electron-ipc": "^0.1.0",
+    "electron-ipc-common": "^0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  }
+}

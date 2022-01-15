@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model memo_app {
+  id   BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  name String @db.VarChar(48)
+  items memo_app_item[]
+}
+
+model memo_app_item {
+  id     BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  app    memo_app @relation(fields: [app_id], references: [id])
+  app_id BigInt
+  title  String @db.VarChar(255)
+  value  String @db.VarChar(255)
+}

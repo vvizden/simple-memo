@@ -1,0 +1,31 @@
+{
+  "name": "renderer",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": ".",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
+  "dependencies": {
+    "vue": "^3.2.26",
+    "vue-router": "4",
+    "electron-ipc-renderer": "^0.1.0",
+    "app-api": "^0.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.1",
+    "typescript": "^4.5.2",
+    "vite": "^2.7.3",
+    "vue-tsc": "^0.30.2",
+    "naive-ui": "^2.23.2",
+    "vfonts": "^0.0.3",
+    "tailwindcss": "^3.0.12",
+    "postcss": "^8.4.5",
+    "autoprefixer": "^10.4.2"
+  }
+}

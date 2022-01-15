@@ -1,0 +1,23 @@
+{
+  "name": "electron-ipc-common",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "viz",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.2",
+    "utility-types": "^3.10.0",
+    "rollup": "^2.63.0",
+    "rollup-plugin-typescript2": "^0.31.1"
+  }
+}

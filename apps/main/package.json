@@ -1,0 +1,55 @@
+{
+  "name": "main",
+  "version": "0.1.0",
+  "description": "For memorizing some web apps.",
+  "main": "dist/main.js",
+  "author": "viz",
+  "scripts": {
+    "compile": "tsc",
+    "watch": "pnpm run compile -- -w",
+    "dev": "env-cmd -e dev electron ./dist/main.js",
+    "build": "electron-builder",
+    "prisma-introspect": "pnpm prisma db pull",
+    "prisma-generate": "pnpm prisma generate"
+  },
+  "build": {
+    "appId": "me.viz.AppMemo",
+    "productName": "Web应用备忘",
+    "directories": {
+      "output": "release"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://localhost:8080/"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  },
+  "dependencies": {
+    "electron": "16.0.6",
+    "@prisma/client": "^3.7.0",
+    "electron-store": "^8.0.1",
+    "app-api": "^0.1.0",
+    "electron-ipc-main": "^0.1.0",
+    "module-alias": "^2.2.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2",
+    "electron-devtools-installer": "^3.2.0",
+    "env-cmd": "^10.1.0",
+    "electron-reloader": "^1.2.1",
+    "@types/node": "^16.11.11",
+    "prisma": "^3.7.0",
+    "electron-builder": "^22.14.5"
+  },
+  "_moduleAliases": {
+    "@/store": "dist/store",
+    "@/util": "dist/util",
+    "@/service": "dist/service"
+  }
+}
