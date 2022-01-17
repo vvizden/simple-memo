@@ -9,6 +9,7 @@ specifiers:
   '@rush-temp/main': file:./projects/main.tgz
   '@rush-temp/renderer': file:./projects/renderer.tgz
   '@types/bluebird': '*'
+  '@types/module-alias': ^2.0.1
   '@types/node': ^16.11.11
   '@vitejs/plugin-vue': ^2.0.1
   autoprefixer: ^10.4.2
@@ -30,7 +31,6 @@ specifiers:
   ts-toolbelt: '*'
   typescript: ^4.5.2
   utility-types: ^3.10.0
-  validator: ^13.7.0
   vfonts: ^0.0.3
   vite: ^2.7.3
   vue: ^3.2.26
@@ -46,6 +46,7 @@ dependencies:
   '@rush-temp/main': file:projects/main.tgz
   '@rush-temp/renderer': file:projects/renderer.tgz
   '@types/bluebird': 3.5.36
+  '@types/module-alias': 2.0.1
   '@types/node': 16.11.11
   '@vitejs/plugin-vue': 2.0.1_vite@2.7.10+vue@3.2.26
   autoprefixer: 10.4.2_postcss@8.4.5
@@ -67,7 +68,6 @@ dependencies:
   ts-toolbelt: 9.6.0
   typescript: 4.5.2
   utility-types: 3.10.0
-  validator: 13.7.0
   vfonts: 0.0.3
   vite: 2.7.10
   vue: 3.2.26
@@ -338,6 +338,10 @@ packages:
     dev: false
     optional: true
 
+  /@types/module-alias/2.0.1:
+    resolution: {integrity: sha512-DN/CCT1HQG6HquBNJdLkvV+4v5l/oEuwOHUPLxI+Eub0NED+lk0YUfba04WGH90EINiUrNgClkNnwGmbICeWMQ==}
+    dev: false
+
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: false
@@ -393,6 +397,10 @@ packages:
 
   /@types/zen-observable/0.8.3:
     resolution: {integrity: sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==}
+    dev: false
+
+  /@vicons/tabler/0.11.0:
+    resolution: {integrity: sha512-ijVUphdgqTde22/4+hlZ9j2AQutpxd3piOW4cWovcnS/ELlMc/4di2/0SDxsJ6282VdZoE9Xv0dI1iSr0XKPEg==}
     dev: false
 
   /@vitejs/plugin-vue/2.0.1_vite@2.7.10+vue@3.2.26:
@@ -4282,11 +4290,12 @@ packages:
     dev: false
 
   file:projects/main.tgz:
-    resolution: {integrity: sha512-WOknDDoim0rEz4FGnTOzoy9U7rDGpzbOADp1B2FgnP0TqRf/uCDUMYzQBFZd8VvRqm8Ly5HolAdx5o0SILn9eg==, tarball: file:projects/main.tgz}
+    resolution: {integrity: sha512-vYgBtSup2USiPRTcJvfFErzOgcrDXPfD0f2CpnYo3F2LCg+45FxUaPX1Wcw1cEq6hzjOaX1jeZsgkmWepIiXdg==, tarball: file:projects/main.tgz}
     name: '@rush-temp/main'
     version: 0.0.0
     dependencies:
       '@prisma/client': 3.7.0_prisma@3.7.0
+      '@types/module-alias': 2.0.1
       '@types/node': 16.11.11
       electron: 16.0.6
       electron-builder: 22.14.5
@@ -4304,11 +4313,12 @@ packages:
     dev: false
 
   file:projects/renderer.tgz:
-    resolution: {integrity: sha512-VtjkuoNqJABvCg6FLl2GlG9GD28PmV3REnqBU9xoKk1KYM0P4f2OxpNY6G0P6asY9qhOYxUUTLcGTvoYFXCIUg==, tarball: file:projects/renderer.tgz}
+    resolution: {integrity: sha512-q+cev7GLLNfdE1Ay/ghHHrc3aux+HV89L6/yQOGfElwyd0DdJt3DuuQv8WNaGpy6gLK6bg0/0EbBkCX7jcOBVw==, tarball: file:projects/renderer.tgz}
     name: '@rush-temp/renderer'
     version: 0.0.0
     dependencies:
       '@types/validator': 13.7.1
+      '@vicons/tabler': 0.11.0
       '@vitejs/plugin-vue': 2.0.1_vite@2.7.10+vue@3.2.26
       autoprefixer: 10.4.2_postcss@8.4.5
       electron-ipc: 0.1.0
