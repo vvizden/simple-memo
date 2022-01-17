@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { NInput, NForm, NFormItem, NButton, NH1, useMessage } from 'naive-ui'
-import { ref } from 'vue'
+import { NInput, NForm, NFormItem, NButton, NH1, NElement, NIcon, useMessage } from 'naive-ui'
+import { ref, onBeforeMount } from 'vue'
 import { dbService } from '@/service'
 import { isValidMySQLURL } from '@/utils/validator'
 import { useRouter } from 'vue-router'
 import { RouteNameMap } from '@/router/constant'
+import { Menu2 } from '@vicons/tabler'
 import type { FormRules } from 'naive-ui'
 
 const router = useRouter()
@@ -69,7 +70,7 @@ const handleValidateClick = async () => {
     try {
       await dbService.save(url, user, password)
     } catch (error) {
-      message.success('配置存储失败，请重试')
+      message.error('配置存储失败，请重试')
       loading.value = false
       return
     }
@@ -86,6 +87,19 @@ const handleValidateClick = async () => {
     loading.value = false
   }
 }
+
+const handleHomeClick = () => {
+  router.replace({
+    name: RouteNameMap.APPList,
+  })
+}
+
+onBeforeMount(async () => {
+  const dbConfig = await dbService.get()
+  if (dbConfig) {
+    formValue.value = dbConfig
+  }
+})
 </script>
 
 <template>
@@ -120,6 +134,21 @@ const handleValidateClick = async () => {
         }}</n-button>
       </n-form-item>
     </n-form>
+
+    <n-element
+      class="fixed bottom-5 right-5 w-11 h-11 flex justify-center items-center rounded-full cursor-pointer shadow-lg"
+      style="
+        background-color: var(--popover-color);
+        color: var(--text-color-2);
+        transition: all 0.3s var(--cubic-bezier-ease-in-out);
+      "
+      title="应用列表"
+      @click="handleHomeClick"
+    >
+      <n-icon size="26">
+        <Menu2 />
+      </n-icon>
+    </n-element>
   </div>
 </template>
 

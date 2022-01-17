@@ -1,13 +1,15 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
 import { RouteNameMap } from './constant'
 import { dbService } from '@/service'
+import { Database, Menu2 } from '@vicons/tabler'
+import type { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    name: RouteNameMap.Home,
     redirect: {
-      name: RouteNameMap.Home,
+      name: RouteNameMap.APPList,
     },
   },
   {
@@ -15,15 +17,17 @@ const routes: RouteRecordRaw[] = [
     name: RouteNameMap.DBConfig,
     component: () => import(/* webpackChunkName: "db" */ '@/views/DBConfig.vue'),
     meta: {
-      title: '数据库配置',
+      title: 'MySQL配置',
+      icon: Database,
     },
   },
   {
-    path: '/home',
-    name: RouteNameMap.Home,
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+    path: '/app-list',
+    name: RouteNameMap.APPList,
+    component: () => import(/* webpackChunkName: "app" */ '@/views/APPList.vue'),
     meta: {
-      title: '搜索',
+      title: '应用列表',
+      icon: Menu2,
     },
   },
 ]
