@@ -76,7 +76,7 @@ dist
 *.sass.ts
 
 # Visual Studio Code
-.vscode
+# .vscode
 
 # Heft
 .heft
