@@ -31,25 +31,21 @@
     }
   },
   "dependencies": {
-    "electron": "16.0.6",
     "@prisma/client": "^3.7.0",
-    "electron-store": "^8.0.1",
     "app-api": "^0.1.0",
+    "electron": "16.0.6",
     "electron-ipc-main": "^0.1.0",
+    "electron-store": "^8.0.1",
     "module-alias": "^2.2.2"
   },
   "devDependencies": {
-    "typescript": "^4.5.2",
-    "electron-devtools-installer": "^3.2.0",
-    "env-cmd": "^10.1.0",
-    "electron-reloader": "^1.2.1",
+    "@types/module-alias": "^2.0.1",
     "@types/node": "^16.11.11",
+    "electron-builder": "^22.14.5",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-reloader": "^1.2.1",
+    "env-cmd": "^10.1.0",
     "prisma": "^3.7.0",
-    "electron-builder": "^22.14.5"
-  },
-  "_moduleAliases": {
-    "@/store": "dist/store",
-    "@/util": "dist/util",
-    "@/service": "dist/service"
+    "typescript": "^4.5.2"
   }
 }

@@ -1,4 +1,10 @@
-import 'module-alias/register'
+import moduleAlias from 'module-alias'
+moduleAlias.addAliases({
+  '@/store': __dirname + '/store',
+  '@/util': __dirname + '/util',
+  '@/service': __dirname + '/service',
+})
+
 import { app, BrowserWindow } from 'electron'
 import path from 'path'
 import { registerService } from './service'
