@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/db-config',
     name: RouteNameMap.DBConfig,
-    component: () => import(/* webpackChunkName: "db" */ '@/views/DaBConfig.vue'),
+    component: () => import(/* webpackChunkName: "db" */ '@/views/DBConfig.vue'),
     meta: {
       title: '数据库配置',
     },
