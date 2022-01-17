@@ -1,4 +1,4 @@
 export const RouteNameMap = {
   Home: 'Home',
-  DbConfig: 'DbConfig',
+  DBConfig: 'DBConfig',
 } as const

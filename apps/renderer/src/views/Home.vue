@@ -14,6 +14,8 @@ import {
 import { appService } from '@/service'
 import { CSSProperties, computed, ref, shallowRef, watchEffect } from 'vue'
 import type { AppVOWithItems } from 'app-api'
+import router from '@/router/router'
+import { RouteNameMap } from '@/router/constant'
 
 const size = 'large' as const
 const contentStyle: CSSProperties = {
@@ -37,6 +39,12 @@ const loadAppList = async () => {
 watchEffect(() => {
   loadAppList()
 })
+
+const handleConfigClick = () => {
+  router.push({
+    name: RouteNameMap.DBConfig,
+  })
+}
 </script>
 
 <template>
@@ -66,6 +74,7 @@ watchEffect(() => {
         color: var(--text-color-2);
         transition: all 0.3s var(--cubic-bezier-ease-in-out);
       "
+      @click="handleConfigClick"
     >
       <n-icon size="26">
         <svg

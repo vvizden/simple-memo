@@ -12,8 +12,8 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/db-config',
-    name: RouteNameMap.DbConfig,
-    component: () => import(/* webpackChunkName: "db" */ '@/views/DbConfig.vue'),
+    name: RouteNameMap.DBConfig,
+    component: () => import(/* webpackChunkName: "db" */ '@/views/DaBConfig.vue'),
     meta: {
       title: '数据库配置',
     },
@@ -42,11 +42,11 @@ router.beforeEach(async (to) => {
   if (dbConfig) {
     return true
   } else {
-    if (to.name === RouteNameMap.DbConfig) {
+    if (to.name === RouteNameMap.DBConfig) {
       return true
     } else {
       return {
-        name: RouteNameMap.DbConfig,
+        name: RouteNameMap.DBConfig,
         replace: true,
       }
     }
