@@ -5,7 +5,7 @@
       "name": "Debug Main Process",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/apps/main",
+      "cwd": "${workspaceFolder}",
       "runtimeExecutable": "rushx",
       "runtimeArgs": ["dev"],
       "outputCapture": "std"
