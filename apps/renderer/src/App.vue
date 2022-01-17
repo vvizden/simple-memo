@@ -6,7 +6,6 @@ const themeOverrides: GlobalThemeOverrides = {
   common: {
     fontWeightStrong: '600',
     borderRadius: '2px',
-    lineHeight: 'unset',
   },
 }
 </script>
