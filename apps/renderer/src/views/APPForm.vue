@@ -33,7 +33,7 @@ const rules: FormRules = {
     type: 'string',
     required: true,
     whitespace: true,
-    message: '请输入应用名称',
+    message: '请输入名称',
     trigger: 'input',
   },
 }
@@ -171,7 +171,7 @@ const onCreate = () => {
     <n-layout-header class="px-2 h-10 flex items-center">
       <n-page-header @back="handleBack">
         <template #title>
-          <span class="align-sub">{{ formType }}应用</span>
+          <span class="align-sub">{{ formType }}</span>
         </template>
       </n-page-header>
     </n-layout-header>
@@ -179,10 +179,10 @@ const onCreate = () => {
       class="!top-10"
       position="absolute"
       :native-scrollbar="false"
-      content-style="padding: 44px; height: 100%;"
+      content-style="padding: 44px;"
     >
       <n-form
-        class="w-3/5 my-0 mx-auto"
+        class="w-4/6 my-0 mx-auto"
         :label-width="80"
         :model="formValue"
         :rules="rules"
@@ -190,11 +190,11 @@ const onCreate = () => {
         :disabled="loading"
         ref="formRef"
       >
-        <n-form-item label="应用名称" path="name" first>
-          <n-input placeholder="请输入应用名称" v-model:value="formValue.name" clearable />
+        <n-form-item label="名称" path="name" first>
+          <n-input placeholder="请输入名称" v-model:value="formValue.name" clearable />
         </n-form-item>
 
-        <n-form-item label="应用属性">
+        <n-form-item label="属性">
           <n-dynamic-input
             item-style="margin-bottom: 0; display: flex;"
             key-field="id"

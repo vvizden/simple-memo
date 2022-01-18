@@ -142,7 +142,7 @@ onBeforeMount(async () => {
         color: var(--text-color-2);
         transition: all 0.3s var(--cubic-bezier-ease-in-out);
       "
-      title="应用列表"
+      title="备忘录"
       @click="handleHomeClick"
     >
       <n-icon size="26">

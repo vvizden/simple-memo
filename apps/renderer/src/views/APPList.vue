@@ -9,12 +9,14 @@ import {
   NEmpty,
   NElement,
   NLayout,
+  NLayoutHeader,
+  NLayoutContent,
   NIcon,
   NButton,
   useMessage,
 } from 'naive-ui'
 import { appService } from '@/service'
-import { CSSProperties, computed, ref, shallowRef, watchEffect } from 'vue'
+import { computed, ref, shallowRef, watchEffect } from 'vue'
 import router from '@/router/router'
 import { RouteNameMap } from '@/router/constant'
 import { Database } from '@vicons/tabler'
@@ -23,9 +25,6 @@ import type { AppVOWithItems } from 'app-api'
 const message = useMessage()
 
 const size = 'large' as const
-const contentStyle: CSSProperties = {
-  padding: '20px',
-}
 
 const search = ref('')
 const appList = shallowRef<AppVOWithItems[]>([])
@@ -86,14 +85,19 @@ const handleRemove = async (id: bigint) => {
 </script>
 
 <template>
-  <n-layout class="w-screen h-screen" :native-scrollbar="false" :content-style="contentStyle">
-    <div class="flex items-center">
+  <n-layout class="w-screen h-screen">
+    <n-layout-header class="px-10 py-5 flex items-center">
       <n-input v-model:value="search" type="text" :size="size" placeholder="输入关键字检索" />
       <n-button class="ml-3" type="success" :size="size" ghost @click="loadAppList">刷新</n-button>
-      <n-button class="ml-3" type="info" :size="size" ghost @click="handleEdit()">新建</n-button>
-    </div>
+      <n-button class="ml-3" type="info" :size="size" ghost @click="handleEdit()">新增</n-button>
+    </n-layout-header>
 
-    <div class="mt-4">
+    <n-layout-content
+      class="!top-20"
+      position="absolute"
+      :native-scrollbar="false"
+      content-style="padding: 0 40px;"
+    >
       <n-list v-if="filteredAppList.length">
         <n-list-item v-for="item of filteredAppList" :key="'' + item.id">
           <n-thing :title="item.name">
@@ -114,7 +118,7 @@ const handleRemove = async (id: bigint) => {
         </n-list-item>
       </n-list>
       <n-empty v-else />
-    </div>
+    </n-layout-content>
 
     <n-element
       class="fixed bottom-5 right-5 w-11 h-11 flex justify-center items-center rounded-full cursor-pointer shadow-lg"

@@ -24,7 +24,7 @@ const routes: RouteRecordRaw[] = [
     name: RouteNameMap.APPList,
     component: () => import(/* webpackChunkName: "app" */ '@/views/APPList.vue'),
     meta: {
-      title: '应用列表',
+      title: '备忘录',
     },
   },
   {
@@ -32,7 +32,7 @@ const routes: RouteRecordRaw[] = [
     name: RouteNameMap.APPAdd,
     component: () => import(/* webpackChunkName: "app" */ '@/views/APPForm.vue'),
     meta: {
-      title: '新增应用',
+      title: '新增',
     },
   },
   {
@@ -40,7 +40,7 @@ const routes: RouteRecordRaw[] = [
     name: RouteNameMap.APPEdit,
     component: () => import(/* webpackChunkName: "app" */ '@/views/APPForm.vue'),
     meta: {
-      title: '编辑应用',
+      title: '编辑',
     },
   },
 ]

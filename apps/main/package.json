@@ -14,7 +14,7 @@
   },
   "build": {
     "appId": "me.viz.AppMemo",
-    "productName": "Web应用备忘",
+    "productName": "备忘录",
     "directories": {
       "output": "release"
     },
