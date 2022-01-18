@@ -78,7 +78,7 @@ const handleValidateClick = async () => {
     message.success('连接成功', {
       onLeave: () => {
         router.replace({
-          name: RouteNameMap.Home,
+          name: RouteNameMap.APPList,
         })
       },
     })
@@ -106,7 +106,7 @@ onBeforeMount(async () => {
   <div class="w-screen h-screen flex flex-col justify-center items-center">
     <n-h1>MySQL 配置</n-h1>
     <n-form
-      class="w-96 h-96"
+      class="w-96"
       :label-width="80"
       :model="formValue"
       :rules="rules"

@@ -58,6 +58,31 @@ const handleConfigClick = () => {
     name: RouteNameMap.DBConfig,
   })
 }
+
+const handleEdit = (id?: bigint) => {
+  router.push({
+    name: id ? RouteNameMap.APPEdit : RouteNameMap.APPAdd,
+    query: {
+      id: id?.toString(),
+    },
+  })
+}
+
+const handleRemove = async (id: bigint) => {
+  let isRemoved = false
+  try {
+    isRemoved = await appService.remove(id)
+  } catch (error) {
+    console.log(error)
+    isRemoved = false
+  }
+  if (isRemoved) {
+    message.success('删除成功')
+    loadAppList()
+  } else {
+    message.error('删除失败')
+  }
+}
 </script>
 
 <template>
@@ -65,7 +90,7 @@ const handleConfigClick = () => {
     <div class="flex items-center">
       <n-input v-model:value="search" type="text" :size="size" placeholder="输入关键字检索" />
       <n-button class="ml-3" type="success" :size="size" ghost @click="loadAppList">刷新</n-button>
-      <n-button class="ml-3" type="info" :size="size" ghost>新建</n-button>
+      <n-button class="ml-3" type="info" :size="size" ghost @click="handleEdit()">新建</n-button>
     </div>
 
     <div class="mt-4">
@@ -73,10 +98,14 @@ const handleConfigClick = () => {
         <n-list-item v-for="item of filteredAppList" :key="'' + item.id">
           <n-thing :title="item.name">
             <template #header-extra>
-              <n-button class="ml-3" type="warning" size="tiny" ghost>编辑</n-button>
-              <n-button class="ml-3" type="error" size="tiny" ghost>删除</n-button>
+              <n-button class="ml-3" type="warning" size="tiny" ghost @click="handleEdit(item.id)"
+                >编辑</n-button
+              >
+              <n-button class="ml-3" type="error" size="tiny" ghost @click="handleRemove(item.id)"
+                >删除</n-button
+              >
             </template>
-            <n-descriptions label-placement="left" bordered size="small">
+            <n-descriptions :column="2" label-placement="left" bordered size="small">
               <n-descriptions-item v-for="field of item.items" :key="'' + field.id" :label="field.title">{{
                 field.value
               }}</n-descriptions-item>

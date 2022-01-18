@@ -19,9 +19,10 @@ export interface AppItemVO {
 export type AppVOParams = Partial<Omit<AppVO, 'id'>> | undefined
 
 export interface AppService extends BaseService<'AppService'> {
+  getOne(id: bigint): AppVOWithItems | null
   list(params?: AppVOParams): AppVO[]
   listWithItems(params?: AppVOParams): AppVOWithItems[]
-  add(vo: Omit<AppVO, 'id'> & { items?: Omit<AppItemVO, 'id'>[] }): false | AppVOWithItems
+  add(vo: Omit<AppVO, 'id'> & { items?: Omit<AppItemVO, 'id' | 'app_id'>[] }): false | AppVOWithItems
   update(
     vo: AppVO & {
       itemsRemove?: bigint[]

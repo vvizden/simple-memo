@@ -16,4 +16,8 @@ export async function registerService() {
 
   register<DBService>('DBService', dbService)
   register<AppService>('AppService', new AppServiceImpl(prismaService))
+
+  return {
+    prismaService,
+  }
 }

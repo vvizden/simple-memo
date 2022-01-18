@@ -1,7 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { RouteNameMap } from './constant'
 import { dbService } from '@/service'
-import { Database, Menu2 } from '@vicons/tabler'
 import type { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
@@ -13,21 +12,35 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: '/db-config',
+    path: '/db/config',
     name: RouteNameMap.DBConfig,
     component: () => import(/* webpackChunkName: "db" */ '@/views/DBConfig.vue'),
     meta: {
       title: 'MySQL配置',
-      icon: Database,
     },
   },
   {
-    path: '/app-list',
+    path: '/app/list',
     name: RouteNameMap.APPList,
     component: () => import(/* webpackChunkName: "app" */ '@/views/APPList.vue'),
     meta: {
       title: '应用列表',
-      icon: Menu2,
+    },
+  },
+  {
+    path: '/app/add',
+    name: RouteNameMap.APPAdd,
+    component: () => import(/* webpackChunkName: "app" */ '@/views/APPForm.vue'),
+    meta: {
+      title: '新增应用',
+    },
+  },
+  {
+    path: '/app/edit',
+    name: RouteNameMap.APPEdit,
+    component: () => import(/* webpackChunkName: "app" */ '@/views/APPForm.vue'),
+    meta: {
+      title: '编辑应用',
     },
   },
 ]

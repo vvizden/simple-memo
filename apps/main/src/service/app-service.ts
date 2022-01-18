@@ -9,13 +9,31 @@ export class AppServiceImpl implements IpcService<AppService> {
     this.dbClientService = dbClientService
   }
 
+  async getOne(id: bigint) {
+    const client = await this.dbClientService.getClient()
+    if (!client) {
+      return null
+    }
+
+    const app = await client.memo_app.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        items: true,
+      },
+    })
+
+    return app
+  }
+
   async list(params?: AppVOParams) {
     const client = await this.dbClientService.getClient()
     if (!client) {
       return []
     }
 
-    const apps = client.memo_app.findMany({
+    const apps = await client.memo_app.findMany({
       where: {
         name: {
           contains: params?.name,
@@ -44,7 +62,7 @@ export class AppServiceImpl implements IpcService<AppService> {
     return apps
   }
 
-  async add(vo: Omit<AppVO, 'id'> & { items?: Omit<AppItemVO, 'id'>[] }) {
+  async add(vo: Omit<AppVO, 'id'> & { items?: Omit<AppItemVO, 'id' | 'app_id'>[] }) {
     const client = await this.dbClientService.getClient()
     if (!client) {
       return false
@@ -79,16 +97,19 @@ export class AppServiceImpl implements IpcService<AppService> {
 
     const transactions = []
 
-    if (vo.itemsRemove) {
-      const removeItems = client.memo_app_item.deleteMany({
-        where: {
-          app_id: vo.id,
-        },
+    if (vo.itemsRemove?.length) {
+      const removeItems = vo.itemsRemove.map((id) => {
+        return client.memo_app_item.deleteMany({
+          where: {
+            app_id: vo.id,
+            id,
+          },
+        })
       })
-      transactions.push(removeItems)
+      transactions.push(...removeItems)
     }
 
-    if (vo.itemsUpdate) {
+    if (vo.itemsUpdate?.length) {
       const updateItems = vo.itemsUpdate.map(({ id, title, value }) => {
         return client.memo_app_item.updateMany({
           where: {
@@ -104,7 +125,7 @@ export class AppServiceImpl implements IpcService<AppService> {
       transactions.push(...updateItems)
     }
 
-    if (vo.itemsAdd) {
+    if (vo.itemsAdd?.length) {
       const addItems = vo.itemsAdd.map(({ title, value }) => {
         return client.memo_app_item.create({
           data: {

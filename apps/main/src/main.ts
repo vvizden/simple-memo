@@ -8,6 +8,7 @@ moduleAlias.addAliases({
 import { app, BrowserWindow } from 'electron'
 import path from 'path'
 import { registerService } from './service'
+import type { PrismaClientImpl } from './service/db-client-service'
 
 //添加热更新功能
 if (process.env.NODE_ENV === 'development') {
@@ -38,8 +39,18 @@ async function createMainWindow() {
  * main 函数
  */
 async function main() {
-  app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') app.quit()
+  let prismaService: PrismaClientImpl | undefined
+  app.on('window-all-closed', async function () {
+    if (prismaService) {
+      try {
+        const client = await prismaService.getClient()
+        client?.$disconnect()
+      } catch (error) {}
+    }
+
+    if (process.platform !== 'darwin') {
+      app.quit()
+    }
   })
 
   await app.whenReady()
@@ -51,7 +62,7 @@ async function main() {
   }
 
   // 注册服务
-  registerService()
+  ;({ prismaService } = (await registerService()) ?? {})
 
   await createMainWindow()
 
