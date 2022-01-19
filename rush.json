@@ -431,8 +431,8 @@
     //   "reviewCategory": "tools"
     // }
     {
-      "packageName": "main",
-      "projectFolder": "apps/main"
+      "packageName": "simple-memo",
+      "projectFolder": "apps/simple-memo"
     },
     {
       "packageName": "renderer",

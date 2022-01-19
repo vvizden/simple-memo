@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "simple-memo",
   "version": "0.1.0",
   "description": "For memorizing some web apps.",
   "main": "dist/main.js",

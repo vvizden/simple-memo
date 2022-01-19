@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "AppMemo",
+			"path": "."
+		},
+		{
+			"name": "app-api",
+			"path": "apps\\app-api"
+		},
+		{
+			"name": "simple-memo",
+			"path": "apps\\simple-memo"
+		},
+		{
+			"name": "renderer",
+			"path": "apps\\renderer"
+		}
+	],
+	"settings": {}
+}

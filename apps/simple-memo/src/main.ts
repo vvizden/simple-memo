@@ -23,10 +23,13 @@ async function createMainWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      devTools: !app.isPackaged,
     },
     frame: true,
     autoHideMenuBar: true,
   })
+  // 去掉菜单
+  mainWindow.setMenu(null)
   // 载入生产环境的 url
   await mainWindow.loadURL(process.env.ELECTRON_START_URL || path.join(__dirname, './dist/index.html'))
   if (process.env.NODE_ENV === 'development') {
