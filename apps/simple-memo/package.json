@@ -1,7 +1,7 @@
 {
   "name": "simple-memo",
   "version": "0.1.0",
-  "description": "For memorizing some web apps.",
+  "description": "Memorizing anything simple.",
   "main": "dist/main.js",
   "author": "viz",
   "scripts": {
