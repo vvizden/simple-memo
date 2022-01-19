@@ -94,9 +94,11 @@ const handleHomeClick = () => {
   })
 }
 
+const hasDBConfig = ref(false)
 onBeforeMount(async () => {
   const dbConfig = await dbService.get()
   if (dbConfig) {
+    hasDBConfig.value = true
     formValue.value = dbConfig
   }
 })
@@ -136,6 +138,7 @@ onBeforeMount(async () => {
     </n-form>
 
     <n-element
+      v-if="hasDBConfig"
       class="fixed bottom-5 right-5 w-11 h-11 flex justify-center items-center rounded-full cursor-pointer shadow-lg"
       style="
         background-color: var(--popover-color);
